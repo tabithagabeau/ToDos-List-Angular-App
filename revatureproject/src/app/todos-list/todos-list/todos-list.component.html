@@ -20,7 +20,7 @@
       <tr *ngFor = 'let todo of filteredTodos'>
         <td>{{todo.id}}</td>
         <!-- <td>{{todo.title}}</td> -->
-        <td><a [routerLink]="['/task', todo.title]">{{todo.title}}</a></td>
+        <td><a [routerLink]="['/specifictask', todo.id]">{{todo.title}}</a></td>
         <td>{{todo.createdOn}}</td>
         <td>{{todo.completed? 'Yes': 'No'}}</td>
       </tr>

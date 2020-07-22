@@ -24,7 +24,7 @@ import { SpecificTaskComponent } from './specific-task/specific-task/specific-ta
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'alltasks', component: TodosListComponent},
-      {path: 'specifictask', component: SpecificTaskComponent}
+      {path: 'specifictask/:id', component: SpecificTaskComponent}
       // {path: 'task/:tasktodo', component: SpecificTaskComponent}
     ])
   ],

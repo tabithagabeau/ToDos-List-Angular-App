@@ -23,6 +23,15 @@ export class SpecificTaskComponent implements OnInit {
     id: new FormControl('')
   });
 
+//  todosFull: ITodos[];
+  //  = new FormGroup({
+  //   title: new FormControl(''),
+  //   id: new FormControl(''),
+  //   createdOn: new FormControl(''),
+  //   completed: new FormControl('')
+  // });
+
+  currentId = '0';
 
   constructor(private route: ActivatedRoute, private todoServ: TodosService) { }
 
@@ -74,10 +83,10 @@ export class SpecificTaskComponent implements OnInit {
     );
   }
 
-
-
-
   ngOnInit(): void {
+    // currentTodo = this.getTodoEc2ById(this.route.snapshot.paramMap.get('id'));
+    this.currentId = this.route.snapshot.paramMap.get('id');
+    // = this.getTodoEc2ById(currentId);
   }
 
 }
