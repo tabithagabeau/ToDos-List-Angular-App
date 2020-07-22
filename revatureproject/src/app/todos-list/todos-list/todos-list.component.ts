@@ -20,7 +20,6 @@ export class TodosListComponent implements OnInit {
       this.filteredTodos = this.todos;
   }
 
-    
     getTodosEc2() {
       this.todoServ.getTodos().subscribe(
         response => {
@@ -55,7 +54,6 @@ export class TodosListComponent implements OnInit {
       return this.todos.filter((task:ITodos)=>
       task.title.toLocaleLowerCase().indexOf(filterBy) !==-1);
     }
-   
 
   ngOnInit(): void {
   }
