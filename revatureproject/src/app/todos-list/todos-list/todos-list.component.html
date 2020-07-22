@@ -3,6 +3,13 @@
     <button (click)="getTodosEc22()">Get Tasks</button>
 </div> -->
 
+<div class='col-md-8'>
+  <form [formGroup]="todos1">
+    <input type="text" formControlName="title">
+  <button (click)='postTodoEc2(todos1)'>Create New Task </button>
+</form>
+</div>
+
 <div class='col-md-4'>
   <input type='text' [(ngModel)]='listFilter'>
 </div>

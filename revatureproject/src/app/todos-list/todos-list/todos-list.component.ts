@@ -16,9 +16,23 @@ export class TodosListComponent implements OnInit {
   filteredTodos: ITodos[];
   attributeListFilter = 'Search task';
 
+  todos1 = new FormGroup({
+    title: new FormControl('')
+  });
+
   constructor(private todoServ: TodosService) { 
       // if {this.attributeListFilter != 'Search task'} 
       this.filteredTodos = this.todos;
+  }
+
+  postTodoEc2(todoSub: FormGroup) {
+    let form = JSON.stringify(todoSub.value);
+    console.log('form in postTodoEC2: ' + form);
+    this.todoServ.postTodo(form).subscribe(
+      () => {
+        console.log('post success');
+      }
+    );
   }
 
     getTodosEc2() {
