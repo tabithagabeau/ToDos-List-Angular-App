@@ -12,45 +12,32 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class TodosListComponent implements OnInit {
 
-  filteredTodos: ITodos[];
-  attrListFilter = 'Search the Todos List';
-
   todos: ITodos[];
+  filteredTodos: ITodos[];
+  attributeListFilter = '';
 
+  todos1 = new FormGroup({
+    title: new FormControl('')
+  });
 
-  constructor(private route: ActivatedRoute, private todoServ: TodosService) { }
-
-  get listFilter(): string {
-    return this.attrListFilter;
+  constructor(private todoServ: TodosService) { 
+      this.filteredTodos = this.todos;
   }
 
-  set listFilter(temp: string) {
-    this.attrListFilter = temp;
-    this.filteredTodos = this.attrListFilter ?
-      this.performFilter(this.attrListFilter) : this.todos;
+  postTodoEc2(todoSub: FormGroup) {
+    let form = JSON.stringify(todoSub.value);
+    console.log('form in postTodoEC2: ' + form);
+    this.todoServ.postTodo(form).subscribe(
+      () => {
+        console.log('post success');
+      }
+    );
   }
 
-  performFilter(filterBy: string): ITodos[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    this.todoServ.getTodos().subscribe(
-      todos => {
-        console.log('Lenght ' + todos.length);
-       return  this.todos.filter((myTodoslist: ITodos) =>
-        myTodoslist.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
-        console.log('Something 1 ' + todos.filter);
-        });
-      //  return this.todos.filter((myTodoslist: ITodos)) =>
-    console.log('Something 2 ' + this.todos);
-    return this.todos;
-
-  }
-
-    
     getTodosEc2() {
       this.todoServ.getTodos().subscribe(
         response => {
           console.log(response);
-          console.log(response[0].title);
         }
       );
     }
@@ -61,9 +48,28 @@ export class TodosListComponent implements OnInit {
         this.todos = todosData;
           });
     }
+
+    ngAfterViewInit(){
+      this.getTodosEc22();
+    } 
       
+    get listFilter(): string{
+      return this.attributeListFilter;
+    }
+
+    set listFilter(temp: string){
+      this.attributeListFilter = temp;
+      this.filteredTodos = this.attributeListFilter ?
+      this.performFilter(this.attributeListFilter) : this.todos;
+    }
+
+    performFilter(filterBy: string): ITodos[] {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.todos.filter((task:ITodos)=>
+      task.title.toLocaleLowerCase().indexOf(filterBy) !==-1);
+    }
+
   ngOnInit(): void {
-    // this.currentHero = this.route.snapshot.paramMap.get('heroname');
   }
 
 }
