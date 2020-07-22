@@ -1,17 +1,12 @@
-
-<!-- <div>
-    <button (click)="getTodosEc22()">Get Tasks</button>
-</div> -->
-
 <div class='col-md-8'>
-  <form [formGroup]="todos1">
-    <input type="text" formControlName="title">
-  <button (click)='postTodoEc2(todos1)'>Create New Task </button>
+  <form [formGroup]="task">
+    <input type="text" formControlName="title" placeholder="Create a new task">
+  <button (click)='postTodoEc2(task)'>Create New Task </button>
 </form>
 </div>
 
 <div class='col-md-4'>
-  <input type='text' [(ngModel)]='listFilter'>
+  <input type='text' [(ngModel)]='listFilter' placeholder="Filter tasks titles">
 </div>
 
 <table class="table table-hover">
@@ -26,13 +21,10 @@
     <tbody>
       <tr *ngFor = 'let todo of filteredTodos'>
         <td>{{todo.id}}</td>
-        <!-- <td>{{todo.title}}</td> -->
         <td><a [routerLink]="['/specifictask', todo.id]">{{todo.title}}</a></td>
         <td>{{todo.createdOn}}</td>
         <td>{{todo.completed? 'Yes': 'No'}}</td>
       </tr>
-     
-
     </tbody>
   </table>
 
