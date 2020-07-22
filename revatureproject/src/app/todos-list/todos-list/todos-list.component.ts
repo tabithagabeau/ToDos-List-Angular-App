@@ -16,7 +16,7 @@ export class TodosListComponent implements OnInit {
   filteredTodos: ITodos[];
   attributeListFilter = 'Search task';
 
-  todos1 = new FormGroup({
+  task = new FormGroup({
     title: new FormControl('')
   });
 
