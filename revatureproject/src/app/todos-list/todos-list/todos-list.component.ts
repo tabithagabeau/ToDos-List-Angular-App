@@ -14,9 +14,10 @@ export class TodosListComponent implements OnInit {
 
   todos: ITodos[];
   filteredTodos: ITodos[];
-  attributeListFilter = '';
+  attributeListFilter = 'Search task';
 
   constructor(private todoServ: TodosService) { 
+      // if {this.attributeListFilter != 'Search task'} 
       this.filteredTodos = this.todos;
   }
 
