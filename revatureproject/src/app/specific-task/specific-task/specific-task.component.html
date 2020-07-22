@@ -1,52 +1,16 @@
 <div class="card w-75">
     <div class="card-body">
-        <h5 class="card-title">Task #{{currentId}}</h5> <!-- Put the Task Id Here ("Task #" + id) -->
-        <p class="card-text"></p> <!-- Put the Task Title Here (title) -->
-        <p class="card-created">Created On:</p> <!-- Put the Date here -->
-        <p class="card-status">Completed:</p> <!-- Put the Status Here (title) -->
-        <a href="#" class="btn btn-primary">Update</a>
-        <a href="#" class="btn btn-primary">Mark Complete</a>
-        <a href="#" class="btn btn-primary">Delete</a>
+      <form [formGroup]="todoWithId">
+            <h5 class="card-title" formControlName="id">Task #{{currentId}}</h5>   <!-- Put the Task Id Here ("Task #" + id) -->
+            <form [formGroup]="todos">
+                <input class="card-text" [(ngModel)]="currentTitle" type="text" formControlName="title">
+            </form>
+        <p class="card-created">Created On: {{currentCreateDate}}</p> <!-- Put the Date here -->
+        <p class="card-status">Completed: {{currentStatus? 'Yes': 'No'}}</p> <!-- Put the Status Here (title) -->
+      </form>
+      <a [routerLink]="['/specifictask', currentId]" class="btn btn-primary" button (click)='putTodoEc22(currentId, currentTitle, currentCreateDate, currentStatus)'>Update</a>
+      <a [routerLink]="['/specifictask', currentId]" class="btn btn-primary" button (click)='completeTodoEc2ById(currentId)'>Mark Complete</a> 
+      <a href="#" class="btn btn-primary" button (click)='deleteTodoEc2ById(currentId)'>Delete</a>
     </div>
 </div>
 
-<div>
-    <form [formGroup]="todos">
-        <input type="text" formControlName="title">
-        <button (click)='postTodoEc2(todos)'>Create Todo</button>
-    </form>
-</div>
-<div class="container-fluid">
-    <form [formGroup]="itemId">
-        <br>
-        <input type="text" formControlName="id" placeholder="Enter ToDo Id">
-        <button (click)='getTodoEc2ById(itemId)'>Get a Todo by Id </button>
-    </form>
-</div>
-
-<div class="container-fluid">
-    <form [formGroup]="itemId">
-        <br>
-        <input type="text" formControlName="id" placeholder="Enter ToDo Id">
-        <button (click)='deleteTodoEc2ById(itemId)'>Delete a Todo by Id </button>
-    </form>
-</div>
-
-<div class="container-fluid">
-    <form [formGroup]="itemId">
-        <br>
-        <input type="text" formControlName="id" placeholder="Enter ToDo Id">
-        <button (click)='completeTodoEc2ById(itemId)'>Complete a Todo by Id </button>
-    </form>
-</div>
-
-<div>
-
-    <form [formGroup]="todoWithId">
-        <br>
-        <input type="text" formControlName="title" placeholder="Enter Updated ToDo">
-        <input type="text" formControlName="id" placeholder="Enter ToDo Id">
-        <button (click)='putTodoEc2(todoWithId)'>Update Todo</button>
-
-    </form>
-</div>
