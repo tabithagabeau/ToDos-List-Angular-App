@@ -1,9 +1,11 @@
 
-<div>
-    <button (click)="getTodosEc22()">See All Tasks</button>
+<!-- <div>
+    <button (click)="getTodosEc22()">Get Tasks</button>
+</div> -->
+
+<div class='col-md-4'>
+  <input type='text' [(ngModel)]='listFilter'>
 </div>
-
-
 
 <table class="table table-hover">
     <thead>
@@ -15,13 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = 'let todo of todos'>
+      <tr *ngFor = 'let todo of filteredTodos'>
         <td>{{todo.id}}</td>
-        <td>{{todo.title}}</td>
-  <!--still working on making the task names into linkable buttons below-->
-    <!-- <td class="list-group">
-    <a [routerLink]="['/task', todo.title]" class="list-group-item list-group-item-action">{{todo.title}}</a>
-  </td> -->
+        <!-- <td>{{todo.title}}</td> -->
+        <td><a [routerLink]="['/task', todo.title]">{{todo.title}}</a></td>
         <td>{{todo.createdOn}}</td>
         <td>{{todo.completed? 'Yes': 'No'}}</td>
       </tr>

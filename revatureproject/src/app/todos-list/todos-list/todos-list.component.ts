@@ -13,15 +13,18 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class TodosListComponent implements OnInit {
 
   todos: ITodos[];
+  filteredTodos: ITodos[];
+  attributeListFilter = '';
 
-  constructor(private todoServ: TodosService) { }
+  constructor(private todoServ: TodosService) { 
+      this.filteredTodos = this.todos;
+  }
 
     
     getTodosEc2() {
       this.todoServ.getTodos().subscribe(
         response => {
           console.log(response);
-          console.log(response[0].title);
         }
       );
     }
@@ -32,9 +35,26 @@ export class TodosListComponent implements OnInit {
         this.todos = todosData;
           });
     }
-      
-    
 
+    ngAfterViewInit(){
+      this.getTodosEc22();
+    } 
+      
+    get listFilter(): string{
+      return this.attributeListFilter;
+    }
+
+    set listFilter(temp: string){
+      this.attributeListFilter = temp;
+      this.filteredTodos = this.attributeListFilter ?
+      this.performFilter(this.attributeListFilter) : this.todos;
+    }
+
+    performFilter(filterBy: string): ITodos[] {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.todos.filter((task:ITodos)=>
+      task.title.toLocaleLowerCase().indexOf(filterBy) !==-1);
+    }
    
 
   ngOnInit(): void {
