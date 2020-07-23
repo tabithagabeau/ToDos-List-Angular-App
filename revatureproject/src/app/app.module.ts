@@ -11,6 +11,8 @@ import {RouterModule} from '@angular/router';
 import { SpecificTaskComponent } from './specific-task/specific-task/specific-task.component';
 import { MarkedCompleteComponent } from './marked-complete/marked-complete/marked-complete.component';
 import { CreateNewTaskComponent } from './create-new-task/create-new-task/create-new-task.component';
+import { DeleteTaskComponent } from './delete-task/delete-task/delete-task.component';
+import { UpdateTaskComponent } from './update-task/update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CreateNewTaskComponent } from './create-new-task/create-new-task/create
     TodosListComponent,
     SpecificTaskComponent,
     MarkedCompleteComponent,
-    CreateNewTaskComponent
+    CreateNewTaskComponent,
+    DeleteTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { CreateNewTaskComponent } from './create-new-task/create-new-task/create
       {path: 'alltasks', component: TodosListComponent},
       {path: 'specifictask/:id', component: SpecificTaskComponent},
       {path: 'markedcomplete', component: MarkedCompleteComponent},
-      {path: 'newtaskcreated', component: CreateNewTaskComponent}
+      {path: 'newtaskcreated', component: CreateNewTaskComponent},
+      {path: 'taskdeleted', component: DeleteTaskComponent},
+      {path: 'taskupdated', component: UpdateTaskComponent}
       // {path: 'task/:tasktodo', component: SpecificTaskComponent}
     ])
   ],
