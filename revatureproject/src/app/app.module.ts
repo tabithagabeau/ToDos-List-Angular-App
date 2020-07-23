@@ -9,12 +9,20 @@ import { TodosListComponent } from './todos-list/todos-list/todos-list.component
 import {TodosService} from './services/todos.service';
 import {RouterModule} from '@angular/router';
 import { SpecificTaskComponent } from './specific-task/specific-task/specific-task.component';
+import { MarkedCompleteComponent } from './marked-complete/marked-complete/marked-complete.component';
+import { CreateNewTaskComponent } from './create-new-task/create-new-task/create-new-task.component';
+import { DeleteTaskComponent } from './delete-task/delete-task/delete-task.component';
+import { UpdateTaskComponent } from './update-task/update-task/update-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosListComponent,
-    SpecificTaskComponent
+    SpecificTaskComponent,
+    MarkedCompleteComponent,
+    CreateNewTaskComponent,
+    DeleteTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,11 @@ import { SpecificTaskComponent } from './specific-task/specific-task/specific-ta
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'alltasks', component: TodosListComponent},
-      {path: 'specifictask/:id', component: SpecificTaskComponent}
+      {path: 'specifictask/:id', component: SpecificTaskComponent},
+      {path: 'markedcomplete', component: MarkedCompleteComponent},
+      {path: 'newtaskcreated', component: CreateNewTaskComponent},
+      {path: 'taskdeleted', component: DeleteTaskComponent},
+      {path: 'taskupdated', component: UpdateTaskComponent}
       // {path: 'task/:tasktodo', component: SpecificTaskComponent}
     ])
   ],
