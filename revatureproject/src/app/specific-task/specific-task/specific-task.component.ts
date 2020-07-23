@@ -118,8 +118,6 @@ export class SpecificTaskComponent implements OnInit {
   ngOnInit(): void {
     this.getTodoEc2ById(this.route.snapshot.paramMap.get('id'));
     this.currentId = this.route.snapshot.paramMap.get('id');
-//    this.currentTitle = this.
-    // = this.getTodoEc2ById(currentId);
   }
 
 
