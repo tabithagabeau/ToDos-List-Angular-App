@@ -24,10 +24,10 @@ export class TodosListComponent implements OnInit {
 
   postTodoEc2(todoSub: FormGroup) {
     let form = JSON.stringify(todoSub.value);
-    console.log('form in postTodoEC2: ' + form);
+    // console.log('form in postTodoEC2: ' + form);
     this.todoServ.postTodo(form).subscribe(
       () => {
-        console.log('post success');
+        // console.log('post success');
       }
     );
   }
@@ -35,7 +35,7 @@ export class TodosListComponent implements OnInit {
     getTodosEc2() {
       this.todoServ.getTodos().subscribe(
         response => {
-          console.log(response);
+          // console.log(response);
         }
       );
     }
@@ -47,10 +47,6 @@ export class TodosListComponent implements OnInit {
         this.filteredTodos = this.todos;
           });
     }
-
-    // ngAfterViewInit(){
-    //   this.getTodosEc22();
-    // } 
       
     get listFilter(): string{
       return this.attributeListFilter;
