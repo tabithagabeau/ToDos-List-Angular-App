@@ -14,16 +14,13 @@ export class TodosListComponent implements OnInit {
 
   todos: ITodos[];
   filteredTodos: ITodos[];
-  attributeListFilter = 'Search task';
+  attributeListFilter = '';
 
   task = new FormGroup({
     title: new FormControl('')
   });
 
-  constructor(private todoServ: TodosService) { 
-      // if {this.attributeListFilter != 'Search task'} 
-      this.filteredTodos = this.todos;
-  }
+  constructor(private todoServ: TodosService) { }
 
   postTodoEc2(todoSub: FormGroup) {
     let form = JSON.stringify(todoSub.value);
@@ -47,12 +44,13 @@ export class TodosListComponent implements OnInit {
       const todosObservable = this.todoServ.getTodos();
       todosObservable.subscribe((todosData: ITodos[]) => {
         this.todos = todosData;
+        this.filteredTodos = this.todos;
           });
     }
 
-    ngAfterViewInit(){
-      this.getTodosEc22();
-    } 
+    // ngAfterViewInit(){
+    //   this.getTodosEc22();
+    // } 
       
     get listFilter(): string{
       return this.attributeListFilter;
@@ -71,6 +69,7 @@ export class TodosListComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.getTodosEc22();
   }
 
 }
