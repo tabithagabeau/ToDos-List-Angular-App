@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TodosService } from 'src/app/services/todos.service';
 import { ActivatedRoute } from '@angular/router';
@@ -121,5 +121,7 @@ export class SpecificTaskComponent implements OnInit {
 //    this.currentTitle = this.
     // = this.getTodoEc2ById(currentId);
   }
+
+
 
 }
