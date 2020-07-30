@@ -44,7 +44,7 @@ export class TodosListComponent implements OnInit {
       const todosObservable = this.todoServ.getTodos();
       todosObservable.subscribe((todosData: ITodos[]) => {
         this.todos = todosData;
-        this.filteredTodos = this.todos;
+        this.filteredTodos = this.todos; //removed from constructor to here to initiate the automatic page load
           });
     }
       

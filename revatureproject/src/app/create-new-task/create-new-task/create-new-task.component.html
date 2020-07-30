@@ -1,1 +1,9 @@
-<p>Task has been created.</p>
+<p>Task has been created. Click on task manager tab to see it.</p>
+
+<div class='col-md-8'>
+    <form [formGroup]="task">
+      <input type="text" formControlName="title" placeholder="Create another task">
+      <a routerLink="/alltasks" class="btn btn-primary" color=white button (click)='postTodoEc2(task)'>Create New Task</a>
+      <!-- <button (click)='postTodoEc2(task)'>Create New Task </button> -->
+    </form>
+  </div>
