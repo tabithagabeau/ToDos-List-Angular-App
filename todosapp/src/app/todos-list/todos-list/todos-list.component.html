@@ -1,0 +1,30 @@
+<div class='col-md-8'>
+  <form [formGroup]="task">
+    <input type="text" formControlName="title" placeholder="Create a new task">
+    <a routerLink="/newtaskcreated" class="btn btn-primary" color=white button (click)='postTodoEc2(task)'>Create New Task</a>
+    <!-- click task in postTodoEc2() is an object of FormGroup (todoSub) passed on as json response via todoServ(service) -->
+  </form>
+</div>
+
+<div class='col-md-4'>
+  <input type='text' [(ngModel)]='listFilter' placeholder="Filter tasks titles">
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Task Description</th>
+      <th scope="col">Date Created</th>
+      <th scope="col">Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let todo of filteredTodos'>
+      <td>{{todo.id}}</td>
+      <td><a [routerLink]="['/specifictask', todo.id]">{{todo.title}}</a></td>
+      <td>{{todo.createdOn}}</td>
+      <td>{{todo.completed? 'Yes': 'No'}}</td>
+    </tr>
+  </tbody>
+</table>

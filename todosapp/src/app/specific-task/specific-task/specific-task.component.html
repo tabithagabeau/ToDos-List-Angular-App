@@ -1,0 +1,16 @@
+<div class="card w-75">
+    <div class="card-body">
+      <form [formGroup]="todoWithId">
+            <h5 class="card-title">Task #{{currentId}}</h5><!-- formControlName="id" not really used; Task Id will be pulled from json response by getTodoEc2ById(id) method -->
+            <form [formGroup]="todos">
+                <input class="card-text" [(ngModel)]="currentTitle" type="text" formControlName="title">
+            </form>
+        <p class="card-created">Created On: {{currentCreateDate}}</p>  <!-- Current Date will be pulled from json response by getTodoEc2ById(id) method -->
+        <p class="card-status">Completed: {{currentStatus? 'Yes': 'No'}}</p> <!-- Current Status will bepulled from json response by getTodoEc2ById(id) method -->
+      </form>
+      <a routerLink="/taskupdated" class="btn btn-primary" button (click)='putTodoEc22(currentId, currentTitle, currentCreateDate, currentStatus)'>Update</a>
+      <a routerLink="/markedcomplete" class="btn btn-primary" button (click)='completeTodoEc2ById(currentId)'>Mark Complete</a>
+      <a routerLink="/taskdeleted" class="btn btn-primary" button (click)='deleteTodoEc2ById(currentId)'>Delete</a>
+    </div>
+</div>
+
